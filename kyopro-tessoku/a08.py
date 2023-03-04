@@ -1,0 +1,24 @@
+H, W = map(int, input().split())
+
+X = [[0] * (W+1) for _ in range(H+1)]
+for i in range(H):
+    array = list(map(int, input().split()))
+    for j in range(W):
+        X[i+1][j+1] = array[j]
+
+Q = int(input())
+ABCD = [list(map(int, input().split())) for _ in range(Q)]
+
+
+for i in range(H+1):
+    for j in range(1, W+1):
+        X[i][j] += X[i][j-1]
+
+for j in range(W+1):
+    for i in range(1, H+1):
+        X[i][j] += X[i-1][j]
+
+# print(X)
+
+for a, b, c, d in ABCD:
+    print(X[c][d] + X[a-1][b-1] - X[a-1][d] - X[c][b-1])
