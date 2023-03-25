@@ -1,1 +1,1 @@
-FROM pypy:7.3
+FROM pypy:3.7
