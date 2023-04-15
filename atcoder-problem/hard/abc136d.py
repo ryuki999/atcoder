@@ -47,8 +47,8 @@ for p in range(32):
     for i in range(N):
         dp[p + 1][i] = dp[p][dp[p][i]]
 
-# for i in dp:
-#     print(i)
+for i in dp:
+    print(i)
 
 # ansに要素の個数をカウントして格納
 for i in range(N):
