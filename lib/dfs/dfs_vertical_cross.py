@@ -1,3 +1,5 @@
+"""縦十字の移動に限ったBFS
+"""
 # pypyではなく、Pythonじゃないと通らない
 from collections import deque
 

@@ -1,3 +1,5 @@
+"""縦十字の移動に限ったBFS
+"""
 # 普通にTLEになる/PythonよりもPypyの方が良い
 from collections import deque
 
