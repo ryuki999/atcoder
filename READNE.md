@@ -15,3 +15,14 @@
  * Pypyでは再帰が深くなるとTLEが増えるため、Pythonの方が良い場合がある
  * `sys.setrecursionlimit(10**6)`などを指定しないとREする
  * 
+
+### PythonとPypyの整数値の特徴
+* Pythonは多倍長整数が使えるが、数値が2^63-1を超えるとTLEの原因になる
+  * C++のlong long型でも数値が2^63-1を超えるとオーバーフローする
+
+### 幾何
+https://blog.hamayanhamayan.com/entry/2018/02/27/105814
+  
+
+### やりがちなエラー
+https://kakedashi-engineer.appspot.com/2020/02/11/procon-miss/
