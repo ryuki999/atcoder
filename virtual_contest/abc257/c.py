@@ -1,25 +1,26 @@
-from bisect import bisect_left, bisect, bisect_right
-
 N = int(input())
 S = input()
 W = list(map(int, input().split()))
 
-child = []
-adult = []
+d = []
 for i in range(N):
-    if S[i] == "0":
-        child.append(W[i])
-    if S[i] == "1":
-        adult.append(W[i])
+    d.append([W[i], S[i]])
 
-child = sorted(child)
-adult = sorted(adult)
-print(child, adult)
-ans = 0
+d = sorted(d, key=lambda x: x[0])
+# print(d)
+
+count = S.count("1")
+ans = S.count("1")
 for i in range(N):
-    pos1 = bisect(child, W[i])
-    pos2 = bisect_left(adult, W[i])
-    print(pos1, pos2)
-    # print(pos2 + N - len(adult))
-    ans = max(ans, pos2 + N - len(adult))
+    # print(count)
+    if d[i][1] == "0":
+        count += 1
+    if d[i][1] == "1":
+        count -= 1
+    # 次のやつと同じ場合はそこで線が引けないから
+    if i + 1 >= N:
+        ans = max(ans, count)
+    if i + 1 < N and d[i][0] != d[i + 1][0]:
+        ans = max(ans, count)
+
 print(ans)
