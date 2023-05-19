@@ -1,4 +1,8 @@
+"""DFSとスタックを使った単純パス探索
+abc270c
+"""
 import sys
+from collections import deque
 
 # 再帰呼び出しの深さの上限を 120000 に設定
 sys.setrecursionlimit(10**6)
@@ -21,21 +25,23 @@ def dfs(pos, G, visited):
     # print(pos)
     ans.append(pos)
     visited[pos] = True
+    if pos == Y:
+        print(*ans)
+        exit()
     for i in G[pos]:
-        if i == Y:
-            ans.append(i)
-            print(*ans)
-            exit()
         if visited[i] == False:
             dfs(i, G, visited)
             # print(pos)
-    ans.remove(pos)
+    # ans.remove(pos)
+    # removeでも良いが計算量がO(N)かかる
+    # stack的に考えられるのでpopでOK
+    ans.pop()
 
 
 # print(AB)
-print(G)
+# print(G)
 visited = [False] * (N + 1)
-ans = []
+ans = deque()
 dfs(X, G, visited)
 
 # print(*ans)
